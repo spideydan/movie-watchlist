@@ -3,8 +3,8 @@ A full stack web application that adds movies User's "To Watch Lists".
 
 **Link to project:** http://https://example.com/
 
-(![popcorn](https://user-images.githubusercontent.com/102763323/188223236-15b20d38-10f6-4674-946b-82fd0b920c3c.jpg)
-)
+![popcorn](https://user-images.githubusercontent.com/102763323/188223236-15b20d38-10f6-4674-946b-82fd0b920c3c.jpg)
+
 
 ## How It's Made:
 
