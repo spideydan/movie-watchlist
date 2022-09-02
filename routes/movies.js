@@ -1,16 +1,17 @@
 const express = require('express')
 const router = express.Router()
-const todosController = require('../controllers/todos') 
+const moviesController = require('../controllers/movies')
 const { ensureAuth } = require('../middleware/auth')
 
-router.get('/', ensureAuth, todosController.getTodos)
+router.get('/', ensureAuth, moviesController.getMovies)
 
-router.post('/createTodo', todosController.createTodo)
+router.post('/addMovie', moviesController.addMovie)
 
-router.put('/markComplete', todosController.markComplete)
+router.put('/watched', moviesController.watched)
 
-router.put('/markIncomplete', todosController.markIncomplete)
+router.put('/unwatched', moviesController.unwatched)
 
-router.delete('/deleteTodo', todosController.deleteTodo)
+router.delete('/deleteMovie', moviesController.deleteMovie)
 
 module.exports = router
+
