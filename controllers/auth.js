@@ -7,13 +7,13 @@ const User = require('../models/User')
 //////////// Function to log user in
 exports.getLogin = (req, res) => {
   if (req.user) {
-    return res.redirect('/todos')
+    return res.redirect('/movies')
   }
   res.render('login', {
     title: 'Login'
   })
 }
-//////////////// What happens post login ///////////////////////
+////////////// What happens post login ////////////
 exports.postLogin = (req, res, next) => {
   const validationErrors = []
   if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' })
@@ -34,7 +34,7 @@ exports.postLogin = (req, res, next) => {
     req.logIn(user, (err) => {
       if (err) { return next(err) }
       req.flash('success', { msg: 'Success! You are logged in.' })
-      res.redirect(req.session.returnTo || '/todos')
+      res.redirect(req.session.returnTo || '/movies')
     })
   })(req, res, next)
 }
@@ -52,7 +52,7 @@ exports.logout = (req, res) => {
 
 exports.getSignup = (req, res) => {
   if (req.user) {
-    return res.redirect('/todos')
+    return res.redirect('/movies')
   }
   res.render('signup', {
     title: 'Create Account'
@@ -94,7 +94,7 @@ exports.postSignup = (req, res, next) => {
         if (err) {
           return next(err)
         }
-        res.redirect('/todos')
+        res.redirect('/movies')
       })
     })
   })

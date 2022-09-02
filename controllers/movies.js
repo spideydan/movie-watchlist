@@ -33,7 +33,8 @@ module.exports = {
         } catch (err) {
             console.log(err)
         }
-    },// mark a todo task as incomplete 
+    },
+    // mark a todo task as incomplete 
     unwatched: async (req, res) => {
         try {
             await Movie.findOneAndUpdate({ _id: req.body.movieIdFromJSFile }, {
