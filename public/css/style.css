@@ -8,3 +8,15 @@ h1{
 .not{
     text-decoration: underline;
 }
+
+body{
+    background-color: grey;
+}
+.login-container{
+    margin: 10% auto;
+    max-width: 50%;
+}
+
+.login-container a{
+    margin: 15px;
+}
