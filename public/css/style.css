@@ -12,6 +12,13 @@ h1{
 body{
     background-color: grey;
 }
+
+body::before {
+    display: block;
+    content: '';
+    height: 70px;
+  }
+
 .login-container{
     margin: 10% auto;
     max-width: 50%;
