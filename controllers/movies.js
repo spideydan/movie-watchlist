@@ -12,7 +12,7 @@ module.exports = {
             console.log(err)
         }
     },
-    // add movie to a todo task
+    // add movie to 'to watch' list
     addMovie: async (req, res) => {
         try {
             await Movie.create({ movie: req.body.movieItem, completed: false, userId: req.user.id })
@@ -22,26 +22,26 @@ module.exports = {
             console.log(err)
         }
     },
-    // mark a todo task as complete 
+    // mark a movie as watched
     watched: async (req, res) => {
         try {
             await Movie.findOneAndUpdate({ _id: req.body.movieIdFromJSFile }, {
                 completed: true
             })
-            console.log('Marked Complete')
-            res.json('Marked Complete')
+            console.log('Mark Watched')
+            res.json('Mark Watched')
         } catch (err) {
             console.log(err)
         }
     },
-    // mark a todo task as incomplete 
+    // mark a movie as unwatched
     unwatched: async (req, res) => {
         try {
             await Movie.findOneAndUpdate({ _id: req.body.movieIdFromJSFile }, {
                 completed: false
             })
-            console.log('Marked Incomplete')
-            res.json('Marked Incomplete')
+            console.log('Marked Unwatched')
+            res.json('Marked Unwatched')
         } catch (err) {
             console.log(err)
         }
