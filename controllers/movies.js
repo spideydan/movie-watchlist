@@ -21,9 +21,10 @@ module.exports = {
     // redirect to add movies page
     addMovie: async (req, res) => {
         try {
-            console.log(req.body.movieItem)
-            const data = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=4d982ce8da366d91dc35465cb660e981&language=en-US&page=1&include_adult=false&query=${req.body.movieItem}`)
-            console.log(data)
+            await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.API_KEY}&original_language=en&page=1&include_adult=false&query=${req.body.movieItem}`)
+            .then((res) => res.json())
+            .then(data => {console.log(data)})
+            res.render('add-movie.ejs')
         }catch(err){ 
             console.log(err)
         }
