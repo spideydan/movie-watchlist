@@ -7,6 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h1>Movies</h1>
+    <ul>
+        <% movies.forEach( el=> { %>
+            <li class='movieItem' data-id='<%=el._id%>'>
+                <span class='<%= el.completed === true ? ' completed' : 'not' %>'><%= el.movie %></span>
+            </li>
+            <% }) %>
+    </ul>
 </body>
 </html>
