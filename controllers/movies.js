@@ -1,6 +1,11 @@
 const Movie = require('../models/movie')
+// const form = document.getElementById('form')
+
+SEARCH_URL = 'https://api.themoviedb.org/3/search/movie?api_key=4d982ce8da366d91dc35465cb660e981&language=en-US&page=1&include_adult=false&query='
 
 // All the different operations you can do in the movie list
+
+
 module.exports = {
     getMovies: async (req, res) => {
         console.log(req.user)
@@ -12,16 +17,29 @@ module.exports = {
             console.log(err)
         }
     },
-    // add movie to 'to watch' list
+
+    // redirect to add movies page
     addMovie: async (req, res) => {
         try {
-            await Movie.create({ movie: req.body.movieItem, completed: false, userId: req.user.id })
-            console.log('Movie has been added!')
-            res.redirect('/movies')
-        } catch (err) {
+            console.log(req.body.movieItem)
+            const data = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=4d982ce8da366d91dc35465cb660e981&language=en-US&page=1&include_adult=false&query=${req.body.movieItem}`)
+            console.log(data)
+        }catch(err){ 
             console.log(err)
         }
     },
+
+    // addMovie: async (req, res) => {
+    //     try {
+    //         await Movie.create({ movie: req.body.movieItem, completed: false, userId: req.user.id })
+    //         console.log('Movie has been added!')
+    //         res.redirect('/movies')
+    //     } catch (err) {
+    //         console.log(err)
+    //     }
+    // },
+
+
     // mark a movie as watched
     watched: async (req, res) => {
         try {
