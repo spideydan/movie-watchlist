@@ -1,7 +1,5 @@
-const Movie = require('../models/movie')
+const Movie = require('../models/Movie')
 // const form = document.getElementById('form')
-
-SEARCH_URL = 'https://api.themoviedb.org/3/search/movie?api_key=4d982ce8da366d91dc35465cb660e981&language=en-US&page=1&include_adult=false&query='
 
 // All the different operations you can do in the movie list
 
@@ -30,7 +28,17 @@ module.exports = {
         //     console.log(err)
         // }
     },
-
+    
+    // add selected movie to watch list
+    addToList: async (req, res) => {
+        try {
+            await Movie.create({_id: req.body.movieIdFromJSFile, movie: req.body.title, poster: req.body.poster, completed: false, userId: req.user.id})
+            console.log('Movie has been added!')
+            res.redirect('/movies')
+        } catch(err){
+            console.log(err)
+        }
+    },
 
     // mark a movie as watched
     watched: async (req, res) => {
