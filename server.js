@@ -44,4 +44,4 @@ app.use('/movies', moviesRoutes)
 
 app.listen(PORT || process.env.PORT, () => {
   console.log('Server is running, you better catch it!')
-})    
+})
