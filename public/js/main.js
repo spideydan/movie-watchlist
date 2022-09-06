@@ -10,7 +10,7 @@ Array.from(movieItem).forEach((el) => {
     el.addEventListener('click', watched)
 })
 
-Array.from(watched).forEach((el) => {
+Array.from(movieComplete).forEach((el) => {
     el.addEventListener('click', unwatched)
 })
 
