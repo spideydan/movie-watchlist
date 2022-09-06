@@ -9,7 +9,7 @@ module.exports = {
         try {
             const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API_KEY}&language=en-US&page=1`);
             const data = await response.json();
-            console.log(data); 
+            // console.log(data); 
             const movieItems = await Movie.find({ userId: req.user.id })
             const itemsLeft = await Movie.countDocuments({ userId: req.user.id, completed: false })
             res.render('movies.ejs', { movies: movieItems, left: itemsLeft, user: req.user, data:data})
