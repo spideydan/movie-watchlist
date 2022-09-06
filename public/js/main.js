@@ -1,10 +1,10 @@
+const addBtn = document.querySelectorAll('.add')
 const deleteBtn = document.querySelectorAll('.del')
 const movieItem = document.querySelectorAll('span.not')
 const movieComplete = document.querySelectorAll('span.completed')
-const addBtn = document.querySelectorAll('.add')
 
 Array.from(addBtn).forEach((el) => {
-    el.addEventListener('click', addToList)
+    el.addEventListener('click', addMovie)
 })
 
 Array.from(deleteBtn).forEach((el) => {
@@ -19,15 +19,12 @@ Array.from(movieComplete).forEach((el) => {
     el.addEventListener('click', unwatched)
 })
 
-async function addToList() {
+async function addMovie() {
     const movieId = this.parentNode.dataset.id
     const movieTitle = this.parentNode.dataset.title
     const moviePoster = this.parentNode.dataset.poster_path
     try {
-        // const movieData = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=4d982ce8da366d91dc35465cb660e981`)
-        // const movie = await movieData.json()
-        // console.log(movie)
-        const response = await fetch('movies/addMovie/addToList', {
+        const response = await fetch('findMovie/addMovie', {
             method: 'post',
             headers: { 'Content-type': 'application/json' },
             body: JSON.stringify({
@@ -38,7 +35,7 @@ async function addToList() {
         })
         const data = await response.json()
         console.log(data)
-        // window.location = '/movies'
+        window.location = '/movies'
     } catch (err) {
         console.log(err)
     }

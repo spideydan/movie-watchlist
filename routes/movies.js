@@ -5,9 +5,9 @@ const { ensureAuth } = require('../middleware/auth')
 
 router.get('/', ensureAuth, moviesController.getMovies)
 
-router.post('/addMovie', moviesController.addMovie)
+router.post('/findMovie', moviesController.findMovie)
 
-router.post('/addMovie/addToList', moviesController.addToList)
+router.post('/findMovie/addMovie', moviesController.addMovie)
 
 router.put('/watched', moviesController.watched)
 
