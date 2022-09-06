@@ -10,7 +10,7 @@ h1{
 }
 
 body{
-    background-color: grey;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 body::before {

@@ -29,6 +29,9 @@
         <%= user.userName %> has <%= left %> things left to do.
     </h2>
 
+
+
+
     <form action="/movies/addMovie" method='POST'>
         <input type="text" placeholder="Enter a movie" name='movieItem'>
         <input type="submit">
@@ -42,76 +45,29 @@
         <div class="container">
           <h2 class="text-center text-white">Movies</h2>
           <p class="lead text-center text-white mb-5">
-            The best # of movies, blablabla 
+            The best movies of all time!! 
           </p>
           <div class="row g-4">
-            <div class="col-md-6 col-lg-3">
-              <div class="card bg-light">
-                <div class="card-body text-center">
-                  <img
-                    src="http://placekitten.com/200/300"
-                    class="mb-3"
-                    alt=""
-                  />
-                  <h3 class="card-title mb-3">--- Movie Name</h3>
-                  <p class="card-text">
-                    Movie Description || release date || other information
-                  </p>
-                  <p>Watch || not watch</p>
+
+            <% for ( let i = 0; i<data.results.length;i++ ) { %>
+              <div class="col-md-6 col-lg-3">
+                <div class="card bg-light">
+                  <div class="card-body text-center">
+                    <img
+                      src="https://image.tmdb.org/t/p/w200<%= data.results[i].poster_path %> "
+                      class="mb-3"
+                      alt=""
+                    />
+                    <h3 class="card-title mb-3"> <%= data.results[i].title %> </h3>
+                    <p class="card-text">
+                     Vote: <%= data.results[i].vote_average %> 
+                    </p>
+                    <p>Release date: <%= data.results[i].release_date %> </p>
+                  </div>
                 </div>
               </div>
-            </div>
+            <% } %>
   
-            <div class="col-md-6 col-lg-3">
-                <div class="card bg-light">
-                  <div class="card-body text-center">
-                    <img
-                      src="http://placekitten.com/200/300"
-                      class="mb-3"
-                      alt=""
-                    />
-                    <h3 class="card-title mb-3">--- Movie Name</h3>
-                    <p class="card-text">
-                      Movie Description || release date || other information
-                    </p>
-                    <p>Watch || not watch</p>
-                  </div>
-                </div>
-            </div>
-  
-            <div class="col-md-6 col-lg-3">
-                <div class="card bg-light">
-                  <div class="card-body text-center">
-                    <img
-                      src="http://placekitten.com/200/300"
-                      class="mb-3"
-                      alt=""
-                    />
-                    <h3 class="card-title mb-3">--- Movie Name</h3>
-                    <p class="card-text">
-                      Movie Description || release date || other information
-                    </p>
-                    <p>Watch || not watch</p>
-                  </div>
-                </div>
-            </div>
-  
-            <div class="col-md-6 col-lg-3">
-                <div class="card bg-light">
-                  <div class="card-body text-center">
-                    <img
-                      src="http://placekitten.com/200/300"
-                      class="mb-3"
-                      alt=""
-                    />
-                    <h3 class="card-title mb-3">--- Movie Name</h3>
-                    <p class="card-text">
-                      Movie Description || release date || other information
-                    </p>
-                    <p>Watch || not watch</p>
-                  </div>
-                </div>
-            </div>
           </div>
         </div>
       </section>
