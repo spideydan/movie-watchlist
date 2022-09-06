@@ -1,9 +1,12 @@
-# Movie Watchlist App
-A full stack web application that adds movies User's "To Watch Lists". 
-
-**Link to project:** http://https://example.com/
+# Movie Watchlist App 
 
 ![popcorn](https://user-images.githubusercontent.com/102763323/188223236-15b20d38-10f6-4674-946b-82fd0b920c3c.jpg)
+
+## About
+Movie Watchlist is full stack web application that adds movies User's "To Watch Lists". It came about in 2022, when movie watchers decided they wanted quicker way to store moives to watch at an later date. 
+
+## Faq
+Movie Watchlist is a virtual web application that stores movies from different movie sites.
 
 
 ## How It's Made:
