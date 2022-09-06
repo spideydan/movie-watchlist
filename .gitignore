@@ -1,3 +1,8 @@
 config/.env
 node_modules
 .vscode/*
+<<<<<<< HEAD
+.env
+config/.env
+=======
+>>>>>>> 3b843352cf250bdb0d29cc099e196f2e3afa95d0
