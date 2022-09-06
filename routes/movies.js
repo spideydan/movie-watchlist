@@ -7,6 +7,8 @@ router.get('/', ensureAuth, moviesController.getMovies)
 
 router.post('/addMovie', moviesController.addMovie)
 
+router.post('/addMovie/addToList', moviesController.addToList)
+
 router.put('/watched', moviesController.watched)
 
 router.put('/unwatched', moviesController.unwatched)
@@ -14,4 +16,4 @@ router.put('/unwatched', moviesController.unwatched)
 router.delete('/deleteMovie', moviesController.deleteMovie)
 
 module.exports = router
-
+ 
