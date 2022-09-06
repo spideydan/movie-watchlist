@@ -1,7 +1,5 @@
-const Movie = require('../models/movie')
+const Movie = require('../models/Movie')
 // const form = document.getElementById('form')
-
-SEARCH_URL = 'https://api.themoviedb.org/3/search/movie?api_key=4d982ce8da366d91dc35465cb660e981&language=en-US&page=1&include_adult=false&query='
 
 // All the different operations you can do in the movie list
 
@@ -18,28 +16,29 @@ module.exports = {
         }
     },
 
-    // redirect to add movies page
+    // redirect to add movies page with movies that match search term. 
     addMovie: async (req, res) => {
-        try {
-            await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.API_KEY}&original_language=en&page=1&include_adult=false&query=${req.body.movieItem}`)
+        // try {
+            await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.API_KEY}&language=en-US&page=1&include_adult=false&query=${req.body.movieItem}`)
             .then((res) => res.json())
-            .then(data => {console.log(data)})
-            res.render('add-movie.ejs')
-        }catch(err){ 
+            .then(data => {
+                console.log(data.results)
+                res.render('add-movie.ejs', {movies: data.results})})
+        // }catch(err){ 
+        //     console.log(err)
+        // }
+    },
+    
+    // add selected movie to watch list
+    addToList: async (req, res) => {
+        try {
+            await Movie.create({_id: req.body.movieIdFromJSFile, movie: req.body.title, poster: req.body.poster, completed: false, userId: req.user.id})
+            console.log('Movie has been added!')
+            res.redirect('/movies')
+        } catch(err){
             console.log(err)
         }
     },
-
-    // addMovie: async (req, res) => {
-    //     try {
-    //         await Movie.create({ movie: req.body.movieItem, completed: false, userId: req.user.id })
-    //         console.log('Movie has been added!')
-    //         res.redirect('/movies')
-    //     } catch (err) {
-    //         console.log(err)
-    //     }
-    // },
-
 
     // mark a movie as watched
     watched: async (req, res) => {

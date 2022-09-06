@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
     <h1>Movies</h1>
     <ul>
         <% movies.forEach( el=> { %>
-            <li class='movieItem' data-id='<%=el._id%>'>
+            <li class='movieItem' data-id='<%=el._id%>' data-title =>
                 <span class='<%= el.completed === true ? ' completed' : 'not' %>'><%= el.movie %></span>
                 <span class='del'> Delete </span>
             </li>
@@ -31,7 +31,7 @@
 
     <a href="/logout">Logout</a>
 
-    <script src="js/main.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 
 </html>

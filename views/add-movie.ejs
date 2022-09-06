@@ -4,16 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
     <title>Document</title>
 </head>
 <body>
     <h1>Movies</h1>
     <ul>
         <% movies.forEach( el=> { %>
-            <li class='movieItem' data-id='<%=el._id%>'>
-                <span class='<%= el.completed === true ? ' completed' : 'not' %>'><%= el.movie %></span>
+            <li class='movieItem' data-id='<%=el.id%>' data-title='<%=el.title%>' data-poster='<%el.poster_path%>'>
+                <img src='<%=`${process.env.IMAGE_URL}${el.poster_path}`%>' alt='movie poster' class='poster' width="300"> 
+                <span ><%= el.title %></span>
+                <button class='add'>Add to watch list</button>
             </li>
             <% }) %>
     </ul>
+    <script src="/js/main.js"></script>
 </body>
 </html>
