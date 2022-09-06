@@ -13,7 +13,6 @@
         <% movies.forEach( el=> { %>
             <li class='movieItem' data-id='<%=el.id%>' data-title='<%=el.title%>' data-poster='<%el.poster_path%>'>
                 <img src='<%=`${process.env.IMAGE_URL}${el.poster_path}`%>' alt='movie poster' class='poster' width="300"> 
-                <span ><%= el.title %></span>
                 <button class='add'>Add to watch list</button>
             </li>
             <% }) %>

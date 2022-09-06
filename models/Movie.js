@@ -1,16 +1,20 @@
 const mongoose = require('mongoose')
 
 const MovieSchema = new mongoose.Schema({
+  movieId: {
+    type: String,
+    required: true
+  },
   movie: {
     type: String,
-    required: true,
+    required: true
   },
   poster: {
     type: String
   },
   completed: {
     type: Boolean,
-    required: true,
+    required: true
   },
   userId: {
     type: String,

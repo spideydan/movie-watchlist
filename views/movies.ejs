@@ -11,6 +11,16 @@
 
 <body>
     <h1>Movies</h1>
+
+    <form action="/movies/findMovie" method='POST'>
+        <input type="text" id="search" class="search" placeholder="Enter a movie" name='movieItem'>
+        <input type="submit">
+    </form>
+
+    <!-- <h2>
+        <%= user.userName %> has <%= left %> things left to do.
+    </h2> -->
+    
     <ul>
         <% movies.forEach( el=> { %>
             <li class='movieItem' data-id='<%=el._id%>' data-title =>
@@ -19,15 +29,6 @@
             </li>
             <% }) %>
     </ul>
-
-    <h2>
-        <%= user.userName %> has <%= left %> things left to do.
-    </h2>
-
-    <form action="/movies/addMovie" method='POST'>
-        <input type="text" id="search" class="search" placeholder="Enter a movie" name='movieItem'>
-        <input type="submit">
-    </form>
 
     <a href="/logout">Logout</a>
 

@@ -1,10 +1,7 @@
 const Movie = require('../models/Movie')
-// const form = document.getElementById('form')
-
-// All the different operations you can do in the movie list
-
 
 module.exports = {
+    // load user's movie list
     getMovies: async (req, res) => {
         console.log(req.user)
         try {
@@ -15,31 +12,27 @@ module.exports = {
             console.log(err)
         }
     },
-
-    // redirect to add movies page with movies that match search term. 
-    addMovie: async (req, res) => {
-        // try {
-            await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.API_KEY}&language=en-US&page=1&include_adult=false&query=${req.body.movieItem}`)
-            .then((res) => res.json())
-            .then(data => {
-                console.log(data.results)
-                res.render('add-movie.ejs', {movies: data.results})})
-        // }catch(err){ 
-        //     console.log(err)
-        // }
-    },
-    
-    // add selected movie to watch list
-    addToList: async (req, res) => {
+    // redirect to find-movies page with movies that match search term
+    findMovie: async (req, res) => {
         try {
-            await Movie.create({_id: req.body.movieIdFromJSFile, movie: req.body.title, poster: req.body.poster, completed: false, userId: req.user.id})
+            const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.API_KEY}&language=en-US&page=1&include_adult=false&query=${req.body.movieItem}`)
+            const data = await response.json()
+            console.log(data)
+            res.render('find-movie.ejs', {movies: data.results})
+        }catch(err){ 
+            console.log(err)
+        }
+    },
+    // add selected movie to watch list
+    addMovie: async (req, res) => {
+        try {
+            await Movie.create({movieId: req.body.movieIdFromJSFile, movie: req.body.title, poster: req.body.poster, completed: false, userId: req.user.id})
             console.log('Movie has been added!')
-            res.redirect('/movies')
+            res.json('Movie has been added!')
         } catch(err){
             console.log(err)
         }
     },
-
     // mark a movie as watched
     watched: async (req, res) => {
         try {
@@ -75,4 +68,4 @@ module.exports = {
             console.log(err)
         }
     }
-}    
+}
