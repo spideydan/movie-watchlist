@@ -20,26 +20,16 @@ module.exports = {
 
     // redirect to add movies page with movies that match search term. 
     addMovie: async (req, res) => {
-        try {
+        // try {
             await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.API_KEY}&language=en-US&page=1&include_adult=false&query=${req.body.movieItem}`)
             .then((res) => res.json())
-            .then(data => {console.log(data)})
-            
-            res.render('add-movie.ejs', { movies: res[title]})
-        }catch(err){ 
-            console.log(err)
-        }
+            .then(data => {
+                console.log(data.results)
+                res.render('add-movie.ejs', {movies: data.results})})
+        // }catch(err){ 
+        //     console.log(err)
+        // }
     },
-
-    // addMovie: async (req, res) => {
-    //     try {
-    //         await Movie.create({ movie: req.body.movieItem, completed: false, userId: req.user.id })
-    //         console.log('Movie has been added!')
-    //         res.redirect('/movies')
-    //     } catch (err) {
-    //         console.log(err)
-    //     }
-    // },
 
 
     // mark a movie as watched
